@@ -24,6 +24,11 @@ namespace Api.Repositorios
         {
             return await _dbContext.Usuario.FirstOrDefaultAsync(x => x.UsuarioId == id);
         }
+
+        public async Task<UsuariosModel> Login(string email, string senha)
+        {
+            return await _dbContext.Usuario.FirstOrDefaultAsync(x => x.UsuarioEmail == email && x.UsuarioSenha == senha);
+        }
         public async Task<UsuariosModel> InsertUser(UsuariosModel user)
         {
             await _dbContext.Usuario.AddAsync(user);
